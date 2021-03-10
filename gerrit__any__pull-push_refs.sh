@@ -6,7 +6,7 @@ set -e
 
 # step1 - 询问切换哪个目录
 echo -e "- Step 1"
-DEFAULT_GIT_SHELL_CD_PARAM="../"
+DEFAULT_GIT_SHELL_CD_PARAM="./"
 read -p "? Where do you want to switch directories(default is ${DEFAULT_GIT_SHELL_CD_PARAM}): " GIT_SHELL_CD_PARAM
 if [ -z $GIT_SHELL_CD_PARAM ];then
   GIT_SHELL_CD_PARAM=${DEFAULT_GIT_SHELL_CD_PARAM}

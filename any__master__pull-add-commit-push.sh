@@ -35,7 +35,7 @@ echo -e "  - git add success! \n"
 # step4 - 提交到历史区，$1 为运行 sh 时的第一个参数
 echo -e "- Step 4"
 echo "- git commit"
-git commit -m $1
+git commit -m "$1"
 echo -e "  - git commit success! \n"
 
 # step5 - 提交到 master 分支

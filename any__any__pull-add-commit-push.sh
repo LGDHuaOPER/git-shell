@@ -13,7 +13,7 @@ if [ -z $GIT_SHELL_CD_PARAM ];then
 fi
 GIT_SHELL_CD_PARAM="${GIT_SHELL_CD_PARAM%\"}"
 GIT_SHELL_CD_PARAM="${GIT_SHELL_CD_PARAM#\"}"
-echo "  - GIT_SHELL_CD_PARAM=${GIT_SHELL_CD_PARAM}"
+echo -e "  - GIT_SHELL_CD_PARAM=${GIT_SHELL_CD_PARAM}"
 cd $GIT_SHELL_CD_PARAM
 echo -e "  - pwd = "
 pwd
@@ -25,12 +25,12 @@ read -p "? Which branch to use(default is master): " USER_GIT_USE_BRANCH
 if [ -z $USER_GIT_USE_BRANCH ];then
   USER_GIT_USE_BRANCH=master
 fi
-echo "USER_GIT_USE_BRANCH=${USER_GIT_USE_BRANCH}"
+echo -e "USER_GIT_USE_BRANCH=${USER_GIT_USE_BRANCH}"
 echo -e "\n"
 
 # step3 - 拉取代码
 echo -e "- Step 3"
-echo "- git pull"
+echo -e "- git pull"
 git pull origin ${USER_GIT_USE_BRANCH}
 # -e 开启转义
 echo -e "  - git pull success! \n"
@@ -40,20 +40,20 @@ echo -e "- Step 4"
 read -p "? Submit update or not, Y/N(default is Y): " USER_GIT_SUBMIT_UPDATE
 if [ -z $USER_GIT_SUBMIT_UPDATE ]
 then
-  echo "  - USER_GIT_SUBMIT_UPDATE=${USER_GIT_SUBMIT_UPDATE}"
+  echo -e "  - USER_GIT_SUBMIT_UPDATE=${USER_GIT_SUBMIT_UPDATE}"
 elif [[ $USER_GIT_SUBMIT_UPDATE == "Y" || $USER_GIT_SUBMIT_UPDATE == "YES" || $USER_GIT_SUBMIT_UPDATE == "y" || $USER_GIT_SUBMIT_UPDATE == "yes" ]]
 then
-  echo "  - USER_GIT_SUBMIT_UPDATE=${USER_GIT_SUBMIT_UPDATE}"
+  echo -e "  - USER_GIT_SUBMIT_UPDATE=${USER_GIT_SUBMIT_UPDATE}"
 else
-  echo "USER_GIT_SUBMIT_UPDATE=${USER_GIT_SUBMIT_UPDATE}"
-  echo "Don't submit update."
+  echo -e "USER_GIT_SUBMIT_UPDATE=${USER_GIT_SUBMIT_UPDATE}"
+  echo -e "Don't submit update."
   exit
 fi
 echo -e "\n"
 
 # step5 - 添加
 echo -e "- Step 5"
-echo "- git add"
+echo -e "- git add"
 git add -A
 echo -e "  - git add success! \n"
 
@@ -65,12 +65,12 @@ if [[ -z $USER_GIT_COMMIT_MESSAGE ]];then
 fi
 USER_GIT_COMMIT_MESSAGE="${USER_GIT_COMMIT_MESSAGE%\"}"
 USER_GIT_COMMIT_MESSAGE="${USER_GIT_COMMIT_MESSAGE#\"}"
-echo "USER_GIT_COMMIT_MESSAGE=${USER_GIT_COMMIT_MESSAGE}"
+echo -e "USER_GIT_COMMIT_MESSAGE=${USER_GIT_COMMIT_MESSAGE}"
 echo -e "\n"
 
 # step7 - 提交到历史区
 echo -e "- Step 7"
-echo "- git commit"
+echo -e "- git commit"
 git commit -m "${USER_GIT_COMMIT_MESSAGE}"
 echo -e "  - git commit success! \n"
 
@@ -79,7 +79,7 @@ echo -e "  - git commit success! \n"
 
 # step8 - 提交到远端分支
 echo -e "- Step 8"
-echo "- git push"
+echo -e "- git push"
 git push origin ${USER_GIT_USE_BRANCH}
 echo -e "  - git push success! \n"
 

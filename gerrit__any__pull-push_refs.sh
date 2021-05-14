@@ -28,30 +28,30 @@ if [ -z $USER_GIT_USE_BRANCH ];then
 fi
 echo -e "  - USER_GIT_USE_BRANCH=${USER_GIT_USE_BRANCH}\n  - success!\n"
 
-# step2 - 拉取代码
+# step3 - 拉取代码
 echo -e "- Step 3"
 echo -e "- git pull --rebase"
 git pull --rebase
 # -e 开启转义
 echo -e "  - git pull --rebase\n  - success!\n"
 
-# step3 - 询问是否提交更新
+# step4 - 询问是否提交更新
 echo -e "- Step 4"
 read -p "? Submit update or not, Y/N(default is Y): " USER_GIT_SUBMIT_UPDATE
 if [ -z $USER_GIT_SUBMIT_UPDATE ]
 then
-  echo "  - USER_GIT_SUBMIT_UPDATE=${USER_GIT_SUBMIT_UPDATE}"
+  echo -e "  - USER_GIT_SUBMIT_UPDATE=${USER_GIT_SUBMIT_UPDATE}"
 elif [[ $USER_GIT_SUBMIT_UPDATE == "Y" || $USER_GIT_SUBMIT_UPDATE == "YES" || $USER_GIT_SUBMIT_UPDATE == "y" || $USER_GIT_SUBMIT_UPDATE == "yes" ]]
 then
-  echo "  - USER_GIT_SUBMIT_UPDATE=${USER_GIT_SUBMIT_UPDATE}"
+  echo -e "  - USER_GIT_SUBMIT_UPDATE=${USER_GIT_SUBMIT_UPDATE}"
 else
-  echo "  - USER_GIT_SUBMIT_UPDATE=${USER_GIT_SUBMIT_UPDATE}"
-  echo "  - Don't submit update."
-  exit
+  echo -e "  - USER_GIT_SUBMIT_UPDATE=${USER_GIT_SUBMIT_UPDATE}"
+  echo -e "  - Don't submit update."
+  exit 0
 fi
 echo -e "\n"
 
-# step4 - 提交到 master 分支
+# step5 - 提交到 master 分支
 echo -e "- Step 5"
 echo -e "- git push origin HEAD:refs/for/${USER_GIT_USE_BRANCH}"
 git push origin HEAD:refs/for/${USER_GIT_USE_BRANCH}
